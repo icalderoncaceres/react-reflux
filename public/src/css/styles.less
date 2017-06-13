@@ -1,0 +1,138 @@
+/*all colors*/
+@main_color: "";
+@bg_color: #E6E6E6;
+@open: 'Open Sans', sans-serif;
+/*main mixins*/
+.c-center {
+  float: none!important;
+  position: relative!important;
+}
+
+.transition() {
+  transition: @time @thing @type;
+  -moz-transition: @time @thing @type;
+  -o-transition: @time @thing @type;
+  -webkit-transition: @time @thing @type;
+}
+/*all styles*/
+body,
+html {
+  font-family: @open;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/*Body and html*/
+body {
+  background-color: @bg_color;
+  background-image: url("../img/bg/textura.png");
+
+  .overlay-back {
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 60%;
+    background-image: url("../img/bg/bg_main.jpg");
+  }
+}
+/* all sections */
+section {
+  position: relative;
+  z-index: 1000;
+}
+/*Header*/
+header {
+  position: relative;
+  z-index: 1000;
+  /* only main header */
+  &.main-header {
+    overflow: hidden;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    /*text header*/
+    .text-header {
+      font-size: 55px;
+      color: #fff;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 56px;
+    }
+    /*text:  "meet your ..."*/
+    .text-second {
+      font-size: 40px;
+      margin-top: 15px;
+    }
+  }
+}
+/*all main page*/
+.main-page {
+  /*all application container*/
+  .main-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    border-radius: 7px;
+  }
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 13px;
+  line-height: 21px;
+  font-weight: 300;
+  color: #666;
+
+  .footer-ts {
+    padding: 0 50px;
+    margin-top: -175px;
+  }
+
+  .footer-list {
+    ul {
+      li {
+        text-decoration: none;
+        list-style: none;
+      }
+    }
+  }
+}
+
+.container {
+  .container-login {
+    .thumbnail {
+      border-color: #337ab7;
+      border-radius: 10px;
+      form {
+        .form-group {
+          img{
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+          h3 {
+            color: #337ab7;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 24px;
+          }
+          label{
+            font-weight: 100;
+            color: #444444;
+          }
+          input{
+            color: #444444;
+          }
+        }
+      }
+    }
+  }
+}
+.header-container{
+  div{
+    .hr{
+      border-color: #337ab7;
+    }
+  }
+}
