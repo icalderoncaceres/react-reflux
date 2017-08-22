@@ -6,16 +6,17 @@
  * TrueService
  */
 
-
 //Import react components
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 //components manually
-import Header from './HeaderMain.react';
-import Footer from './FooterMain.react';
-import MasterContainer from './MasterContainer.react';
+import PrivateRoute from "../recurrent/PrivateRoute.react";
+
+//Login
+import Login from "../login/Login.react";
+import Panel from "../panel/MainPanel.react";
 
 //Create class
 class MasterPage extends React.Component {
@@ -23,16 +24,34 @@ class MasterPage extends React.Component {
     super(props);
   }
 
+  //components
+  componentDidMount() {
+    //Info
+    // $(document).ajaxStart(() => {
+    //   $('#main_overlay').fadeIn();
+    // });
+    //
+    // $(document).ajaxStop(() => {
+    //   $('#main_overlay').fadeOut();
+    // });
+  }
+
+  //render
   render() {
     return (
       <Router>
         <div>
-          {/*print header*/}
+          {/* login rater*/}
+          <Route path="/login" component={Login}></Route>
+          <PrivateRoute path="/" component={Panel}></PrivateRoute>
+
+          {/*print header
+
           <Header/>
 
-          <MasterContainer />
+          <MasterContainer/>*/}
+         {/* <Footer/> */}
 
-          <Footer />
         </div>
       </Router>
     )

@@ -6,11 +6,10 @@
  * TrueService
  */
 
- //Global uris
- global.apiUri = "http://10.41.6.154:3000/";
- global.mediaUri = "http://10.41.6.154:3000/";
+
 
 //Import from react
+require('../conf.js');
 import React from 'react';
 import {render} from 'react-dom';
 
@@ -18,4 +17,5 @@ import {render} from 'react-dom';
 import MasterPage from "./components/main/MasterPage.react";
 
 //Render
-render(<MasterPage />, document.getElementById('mainApp'));
+render(
+  <MasterPage/>, document.getElementById('mainApp'));

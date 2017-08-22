@@ -6,35 +6,96 @@
  * TrueService
  */
 
- //Import react dependencies
- import React from 'react';
+//Import react dependencies
+import React from 'react';
+import Reflux from 'reflux';
+import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Cookies from 'react-cookie';
+import Is from 'is_js';
 
- //files manually
- import MenuNav from './MenuNav.react';
+//files manually
+import MenuNav from './MenuNav.react';
+import MainHeader from './MainHeader.react';
+import PrivateRoute from "../recurrent/PrivateRoute.react";
 
- //Class
- class MainPanel extends React.Component {
-   //main
-   constructor(props) {
-     //Call parents
-     super(props);
-   }
+//Routes
+import Test from "../Test.react";
+// import AudioMain from "../audios/AudioMain.react";
+// import AdministratorMain from "../administrator/AdministratorMain.react";
 
-   //Render
-   render(){
+//Import stores and actions
+import SessionStore from "../../stores/user/SessionStore";
+import SessionActions from "../../actions/user/SessionActions";
 
-     //Return app
-     return(
-       <section className="main-panel container-fluid">
-         <MenuNav></MenuNav>
+//Class
+class MainPanel extends Reflux.Component {
+  //main
+  constructor(props) {
+    //Call parents
+    super(props);
 
-         <div className="col-md-9">
-           rest of page
-         </div>
-       </section>
-     );
-   }
- }
+    //Make Stores
+    this.stores = [SessionStore];
+  }
 
- //Export default
- export default MainPanel;
+  //Component after mount
+  componentDidMount() {
+    //Cookies
+    var acc_one = Cookies.load('access-one');
+    var acc_two = Cookies.load('access-two');
+
+    if (Is.not.undefined(acc_one) && Is.not.undefined(acc_two)) {
+      //call login again
+      SessionActions.logIn(acc_one, acc_two);
+    }
+
+  }
+
+  //Render
+  render() {
+
+    //Return app
+    return (
+      <div>
+        <MainHeader></MainHeader>
+        <MenuNav></MenuNav>
+
+        <div className="content-wrapper">
+          {/* agents */}
+
+          {/* <Searchable/> */}
+          {/* <PrivateRoute path="/audio" component={AudioMain}></PrivateRoute> */}
+          {/* <PrivateRoute path="/administrator" component={AdministratorMain}></PrivateRoute> */}
+          <PrivateRoute path="/test" component={Test}></PrivateRoute>
+
+          {/* <section className="content-header">
+            <h1>
+              Dashboard
+              <small>Control panel</small>
+            </h1>
+            <ol className="breadcrumb">
+              <li><a href="#"><i className="fa fa-dashboard"></i> Home</a></li>
+              <li className="active">Dashboard</li>
+            </ol>
+          </section>
+
+          <section className="content">
+          </section> */}
+          <div className="clearfix"></div>
+
+        </div>
+
+        <div className="clearfix"></div>
+
+        {/* <div className="overlay" id="main_overlay">
+          <i className="fa fa-refresh fa-spin"></i>
+        </div> */}
+      </div>
+    );
+
+  }
+}
+
+//Export default
+export default MainPanel;

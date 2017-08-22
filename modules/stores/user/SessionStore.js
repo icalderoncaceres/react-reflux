@@ -36,53 +36,59 @@ class SessionStore extends Reflux.Store {
 
   /*funciotn on send login*/
   onLogIn(user, pass, highHisotry) {
+
     //User and pass
-    $.ajax({
-      url: global.apiUri + "login",
-      type: 'post',
-      data: {
-        email: user,
-        pass: pass
-      },
-      crossDomain: true,
-      success: (response) => {
-
-        console.log(response);
-        this.setState({code: response.code});
-        if (response.code == 1) {
-
-          //Inner session init
-          this.setState({
-            userData: {
-              id: response.session.id_user,
-              super: response.session.superadmin,
-              username: user,
-              user: pass,
-              email: 'p@p.com',
-              companyLogo: response.company_logo
-            },
-            isLogged: true
-          });
-
-          /*Create cookies|*/
-          Cookie.save('access-one', user, {
-            path: '/',
-            expires: new Date(2117, 12, 31, 23, 59, 59)
-          });
-
-          Cookie.save('access-two', pass, {
-            path: '/',
-            expires: new Date(2117, 12, 31, 23, 59, 59)
-          });
-
-          //Define
-          if (Is.not.undefined(highHisotry)) {
-            highHisotry.push('/', {'state': 'new'});
-          }
-        }
-      }
-
+    // $.ajax({
+    //   url: global.apiUri + "login",
+    //   type: 'post',
+    //   data: {
+    //     email: user,
+    //     pass: pass
+    //   },
+    //   crossDomain: true,
+    //   success: (response) => {
+    //
+    //     //console.log(response);
+    //     this.setState({code: response.code});
+    //     if (response.code == 1) {
+    //
+    //       //Inner session init
+    //       this.setState({
+    //         userData: {
+    //           id: response.session.id_user,
+    //           super: response.session.superadmin,
+    //           username: user,
+    //           email: 'p@p.com',
+    //           companyLogo: response.company_logo
+    //         },
+    //         isLogged: true
+    //       });
+    //
+    /*Create cookies|*/
+    Cookie.save('access-one', 'this_one_user', {
+      path: '/',
+      expires: new Date(2117, 12, 31, 23, 59, 59)
     });
+
+    Cookie.save('access-two', 'this_two_pass', {
+      path: '/',
+      expires: new Date(2117, 12, 31, 23, 59, 59)
+    });
+
+    Cookie.save('access-id', 'this_two_response.session.id_user', {
+      path: '/',
+      expires: new Date(2117, 12, 31, 23, 59, 59)
+      
+    });
+    //
+    //Define
+    if (Is.not.undefined(highHisotry)) {
+      highHisotry.push('/', {'state': 'new'});
+    }
+    //     }
+    //   }
+    //
+    // });
 
   }
 
