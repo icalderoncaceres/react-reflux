@@ -1,9 +1,6 @@
 /**
- * Copyright (c) 2017, TrueService.
- * All Right reserved
+ * Copyright (c) 2017, ivandario2010@gmail.com
  *
- * This source is licenced under privative and all copyrights are property of
- * TrueService
  */
 
 //imprt dependencies

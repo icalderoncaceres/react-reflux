@@ -1,9 +1,6 @@
 /**
- * Copyright (c) 2017, TrueService.
- * All Right reserved
+ * Copyright (c) 2017, ivandario2010@gmail.com
  *
- * This source is licenced under privative and all copyrights are property of
- * TrueService
  */
 
 import React from 'react';
@@ -21,14 +18,58 @@ class MenuNav extends Reflux.Component {
   constructor(props) {
     //Super props
     super(props);
-    this.stores = [SessionStore];
-  }
-  _doLogout() {
-    SessionActions.logOut();
+    this.state={
+      options:[
+        {id:0,title:'react-addons-css-transition-group',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:1,title:'react-addons-shallow-compare',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:2,title:'react-addons-update',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:3,title:'react-bootstrap-table',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:4,title:'react-cookie',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:5,title:'react-dates',url:'/react-dates',iconClass:'far fa-calendar-alt',options:[{id:0,title:'CalendarDay',url:'calendarDay'}]},
+        {id:6,title:'react-dom',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:7,title:'react-dom-factories',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:8,title:'react-input-autosize',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:9,title:'react-modal',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:10,title:'react-moment-prototypes',iconClass:'fa fa-user',url:'/',options:[]},
+        {id:11,title:'react-portal',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:12,title:'react-router',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:13,title:'react-router-dom',url:'/',iconClass:'fa fa-user',options:[]},
+        {id:14,title:'react-select',url:'/',iconClass:'fa fa-user',options:[]}
+      ]
+    }
+    this.stores = [SessionStore];    
   }
   //Renderk
   render() {
-    var props = this.state.userData;
+    let options=this.state.options.map((data,i)=>{
+        let suboptions="";
+        if(data.options.length>0){
+          suboptions=data.options.map((data2,j)=>{
+            return(
+              <li key={"submenu-" + data2.id}>
+                <Link to={data.url + data2.url}>
+                    <i className={data.iconClass} aria-hidden="true"></i>
+                    &nbsp;{data2.title}
+                </Link>
+              </li>
+            );
+          });
+        }
+        return(
+          <li className="treeview" key={"menu-" + data.id}>
+             <Link to={data.url}>
+               <i className={data.iconClass}></i>
+               <span> {data.title}</span>
+               <span className="pull-right-container">
+                 <i className="fa fa-angle-left pull-right"></i>
+               </span>
+             </Link>
+             <ul className="treeview-menu">
+                {suboptions}
+              </ul>
+            </li>
+        );
+    });
     //Returns
     return (
       <aside className="main-sidebar">
@@ -37,13 +78,10 @@ class MenuNav extends Reflux.Component {
           {/* <!-- Sidebar user panel --> */}
           <div className="user-panel">
             <div className="pull-left image">
-              <img src="http://127.0.0.1:3200/src/dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
+              <img src="/src/img/fotoivan.jpg" className="img-circle" alt="User Image"/>
             </div>
             <div className="pull-left info">
-              <p>Alexander Pierce</p>
-              {/* <a href="#">
-                <i className="fa fa-circle text-success"></i>
-                Online</a> */}
+              <p>Iván Calderon</p>
             </div>
           </div>
           {/* <!-- search form --> */}
@@ -66,88 +104,11 @@ class MenuNav extends Reflux.Component {
                 <span>Dashboard</span>
               </Link>
             </li>
-            <li className="header">REPORTS</li>
-            <li className="treeview">
-              <a href="#">
-                <i className="fa fa-adn"></i>
-                <span>Administrator</span>
-                <span className="pull-right-container">
-                  <i className="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul className="treeview-menu">
-                <li>
-                  <Link to="/administrator/user">
-                  <i className="fa fa-user" aria-hidden="true"></i>
-                  User
-                  </Link>
-                </li>
-                {/* <li>
-                  <Link to="/administrator/edituser">
-                  <i className="fa fa-user"></i>
-                  Edit User
-                  </Link>
-                </li> */}
-                <li>
-                  <Link to="/administrator/configuration">
-                  <i className="fa fa-cogs"></i>
-                  Configuration
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="active treeview">
-              <a href="#">
-                <i className="fa fa-headphones"></i>
-                <span>Audios</span>
-                <span className="pull-right-container">
-                  <i className="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul className="treeview-menu">
-                <li>
-                  <Link to="/audio/callanalytics">
-                    <i className="fa fa-line-chart" aria-hidden="true"></i>
-                    Call Analytics
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/audio/callindicators">
-                    <i className="fa fa-pie-chart" aria-hidden="true"></i>
-                    Call Indicators
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/audio/comparision-tool">
-                    <i className="fa fa-wrench" aria-hidden="true"></i>
-                    Comparison Tool
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/audio/agents">
-                    <i className="fa fa-user-md" aria-hidden="true"></i>
-                    Agents
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/audio/customers">
-                    <i className="fa fa-circle-o"></i>
-                    Customers
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/audio/productservices">
-                    <i className="fa fa-book" aria-hidden="true"></i>
-                    Products and Services
-                  </Link>
-                </li>
-
-              </ul>
-            </li>
+            {options}
 
             <li className="header">More</li>
             <li>
-              <a href="#" onClick={this._doLogout.bind(this)}>
+              <a href="#" >
                 <i className="fa fa-sign-out text-red"></i>
                 <span >Sign Out</span>
               </a>
@@ -159,8 +120,6 @@ class MenuNav extends Reflux.Component {
       </aside>
     );
   }
-
 }
-
 //export route of
 export default MenuNav;

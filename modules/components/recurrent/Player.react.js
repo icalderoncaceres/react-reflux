@@ -1,4 +1,8 @@
-//Import dependencies
+/**
+ * Copyright (c) 2017, ivandario2010@gmail.com
+ *
+ */
+
 import React from 'react';
 import Reflux from 'reflux';
 

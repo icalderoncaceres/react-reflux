@@ -1,8 +1,8 @@
 {
-  "name": "TrueServices-_Client",
+  "name": "Reflux-template",
   "version": "0.0.1",
-  "description": "Beta of client TrueServices",
-  "author": "YaraWebDeveloper - 724media",
+  "description": "Beta of Reflux-template",
+  "author": "Iván Calderon",
   "main": "server.js",
   "scripts": {
     "start": "webpack && node server.js",

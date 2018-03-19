@@ -1,9 +1,6 @@
 /**
- * Copyright (c) 2017, TrueService.
- * All Right reserved
+ * Copyright (c) 2017, ivandario2010@gmail.com
  *
- * This source is licenced under privative and all copyrights are property of
- * TrueService
  */
 
 import React from 'react';
@@ -27,14 +24,14 @@ class MainHeader extends Reflux.Component {
     return (
 
       <header className="main-header">
-        <a href="index2.html" className="logo">
+        <a href="mailto:ivandario2010@gmail.com" className="logo">
           {/* <!-- mini logo for sidebar mini 50x50 pixels --> */}
           <span className="logo-mini">
             <b>Tr</b>Sr</span>
           {/* <!-- logo for regular state and mobile devices --> */}
           <span className="logo-lg">
             {/* <b>Admin</b>LTE */}
-            <img src="http://127.0.0.1:3200/src/img/logo_service.png" className="img-responsive"/>
+            <img src="/src/img/fotoivan.jpg" className="img-responsive"/>
           </span>
         </a>
         {/* <!-- Header Navbar: style can be found in header.less --> */}
@@ -53,17 +50,17 @@ class MainHeader extends Reflux.Component {
               {/* <!-- User Account: style can be found in dropdown.less --> */}
               <li className="dropdown user user-menu">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                  <img src="http://127.0.0.1:3200/src/dist/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
-                  <span className="hidden-xs">Alexander Pierce</span>
+                  <img src="/src/img/fotoivan.jpg" className="user-image" alt="User Image"/>
+                  <span className="hidden-xs">Iván Calderon</span>
                 </a>
                 <ul className="dropdown-menu">
                   {/* <!-- User image --> */}
                   <li className="user-header">
-                    <img src="http://127.0.0.1:3200/src/dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
+                    <img src="/src/img/fotoivan.jpg" className="img-circle" alt="User Image"/>
 
                     <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
+                      Iván Calderon - Web Developer
+                      <small>ivandario2010@gmail.com</small>
                     </p>
                   </li>
 
@@ -78,12 +75,6 @@ class MainHeader extends Reflux.Component {
                   </li>
                 </ul>
               </li>
-              {/* <!-- Control Sidebar Toggle Button --> */}
-              {/* <li>
-                <a href="#" data-toggle="control-sidebar">
-                  <i className="fa fa-gears"></i>
-                </a>
-              </li> */}
             </ul>
           </div>
         </nav>
